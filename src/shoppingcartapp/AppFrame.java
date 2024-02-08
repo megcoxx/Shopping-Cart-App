@@ -23,14 +23,14 @@ public class AppFrame extends JFrame {
         this.setVisible(true);
         this.add(this.title, BorderLayout.NORTH);
         for (Aisle aisle : aisles) {
-            tabs.addTab(aisle.Name, returnAisleTab(aisle));
+            tabs.addTab(aisle.Name, returnAisleTab(aisle, MyList));
         }
 
         tabs.addTab("Checkout", returnListTab(MyList));
 
         this.add(this.tabs, BorderLayout.CENTER);
 
-        addlistener();
+        addlistener(MyList);
 
     }
 
@@ -72,89 +72,98 @@ public class AppFrame extends JFrame {
     // }
     // }
 
-    public void addlistener() {
+    public void addlistener(List MyList) {
 
         // change to search
-        // additem.addMouseListener(new MouseAdapter() {
-        // @Override
-        // public void mousePressed(MouseEvent e) {
-        // GroceryItem item = new GroceryItem();
-        // MyList.add(item);
-        // MyList.indexnum();
-        // revalidate();
-        // repaint();
+        additem.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                GroceryItem item = new GroceryItem();
+                MyList.add(item);
+                MyList.indexnum();
+                revalidate();
+                repaint();
 
-        // JButton shoppedbtn = item.getshoppedj();
-        // shoppedbtn.addMouseListener(new MouseAdapter() {
-        // @Override
-        // public void mousePressed(MouseEvent e) {
-        // item.shoppedstatus();
-        // MyList.add(item);
-        // revalidate();
-        // }
-        // });
+                JButton shoppedbtn = item.getshoppedj();
+                shoppedbtn.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        item.shoppedstatus();
+                        MyList.add(item);
+                        revalidate();
+                    }
+                });
 
-        // JButton remove = item.getremovej();
-        // remove.addMouseListener(new MouseAdapter() {
-        // @Override
-        // public void mousePressed(MouseEvent e) {
-        // MyList.remove(item);
-        // MyList.indexnum();
-        // revalidate();
-        // repaint();
-        // }
-        // });
-        // }
-        // });
+                JButton remove = item.getremovej();
+                remove.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        MyList.remove(item);
+                        MyList.indexnum();
+                        revalidate();
+                        repaint();
+                    }
+                });
+            }
+        });
 
-        // deleteitem.addMouseListener(new MouseAdapter() {
-        // @Override
-        // public void mousePressed(MouseEvent e) {
-        // Component[] itemlist = MyList.getComponents();
-        // for (Component component : itemlist) {
-        // if (component instanceof GroceryItem) {
-        // MyList.remove(component);
-        // }
-        // }
-        // revalidate();
-        // repaint();
-        // }
-        // });
+        deleteitem.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                Component[] itemlist = MyList.getComponents();
+                for (Component component : itemlist) {
+                    if (component instanceof GroceryItem) {
+                        MyList.remove(component);
+                    }
+                }
+                revalidate();
+                repaint();
+            }
+        });
     }
 
-    public JPanel returnAisleTab(Aisle aisle) {
-        GridLayout layout = new GridLayout(aisle.Items.size(), 2);
+    public JPanel returnAisleTab(Aisle aisle, List MyList) {
+        GridLayout itemLayout = new GridLayout(aisle.Items.size(), 3);
         JPanel panel = new JPanel();
-        panel.setLayout(layout);
+        panel.setLayout(itemLayout);
         for (GroceryItem i : aisle.Items) {
-            JLabel row1 = new JLabel(i.name);
-            JLabel row2 = new JLabel(Float.toString(i.price));
-            panel.add(row1);
-            panel.add(row2);
+            JLabel nameColumn = new JLabel(i.name);
+            JLabel priceColumn = new JLabel(Float.toString(i.price));
+            JButton addToCartBtn = new JButton("Add to Cart");
+            panel.add(nameColumn);
+            panel.add(priceColumn);
+            panel.add(addToCartBtn);
+            addToCartBtn.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    MyList.add(i);
+                    MyList.revalidate();
+                    MyList.repaint();
+                }
+            });
             setVisible(true);
         }
         return panel;
     }
 
     public JPanel returnListTab(List aisle) {
-        BorderLayout blayout = new BorderLayout();
-        JPanel bigPanel = new JPanel();
-        bigPanel.setLayout(blayout);
-        GridLayout layout = new GridLayout(aisle.Items.size(), 2);
-        JPanel panel = new JPanel();
-        panel.setLayout(layout);
-        bigPanel.add(panel, BorderLayout.CENTER);
+        JPanel fullPanel = new JPanel();
+        fullPanel.setLayout(new BorderLayout());
+        GridLayout itemLayout = new GridLayout(aisle.Items.size(), 2);
+        JPanel itemPanel = new JPanel();
+        itemPanel.setLayout(itemLayout);
+        fullPanel.add(itemPanel, BorderLayout.CENTER);
         for (GroceryItem i : aisle.Items) {
-            JLabel row1 = new JLabel(i.name);
-            JLabel row2 = new JLabel(Float.toString(i.price));
-            panel.add(row1);
-            panel.add(row2);
+            JLabel nameColumn = new JLabel(i.name);
+            JLabel priceColumn = new JLabel(Float.toString(i.price));
+            itemPanel.add(nameColumn);
+            itemPanel.add(priceColumn);
             setVisible(true);
         }
         additem = btnpanel.getadditembtn();
         deleteitem = btnpanel.getdeleteitembtn();
-        bigPanel.add(btnpanel, BorderLayout.SOUTH);
+        fullPanel.add(btnpanel, BorderLayout.SOUTH);
 
-        return bigPanel;
+        return fullPanel;
     }
 }

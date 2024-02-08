@@ -21,7 +21,7 @@ public class GroceryItem extends JPanel {
     private final JLabel itemname;
     private final JButton additembtn;
     //change to add to list
-//    private final JButton remove;
+   private final JButton remove;
 //    
     public GroceryItem(){
         GridLayout Layoutitem = new GridLayout(1, 4);
@@ -52,9 +52,9 @@ public class GroceryItem extends JPanel {
         additembtn.setPreferredSize(new Dimension(10, 20));
         this.add(this.additembtn);
 
-//        remove = new JButton("Remove");
-//        remove.setPreferredSize(new Dimension(10, 20));
-//        this.add(this.remove);
+       remove = new JButton("Remove");
+       remove.setPreferredSize(new Dimension(10, 20));
+       this.add(this.remove);
 
     }
 
@@ -89,9 +89,9 @@ public class GroceryItem extends JPanel {
         additembtn.setPreferredSize(new Dimension(10, 20));
         this.add(this.additembtn);
 
-//        remove = new JButton("Remove");
-//        remove.setPreferredSize(new Dimension(10, 20));
-//        this.add(this.remove);
+       remove = new JButton("Remove");
+       remove.setPreferredSize(new Dimension(10, 20));
+       this.add(this.remove);
 
     }
     
@@ -125,9 +125,9 @@ public class GroceryItem extends JPanel {
         additembtn.setPreferredSize(new Dimension(10, 20));
         this.add(this.additembtn);
 
-//        remove = new JButton("Remove");
-//        remove.setPreferredSize(new Dimension(10, 20));
-//        this.add(this.remove);
+       remove = new JButton("Remove");
+       remove.setPreferredSize(new Dimension(10, 20));
+       this.add(this.remove);
 
     }
 
@@ -140,9 +140,9 @@ public class GroceryItem extends JPanel {
         return this.additembtn;
     }
 
-//    public JButton getremovej() {
-//        return this.remove;
-//    }
+    public JButton getremovej() {
+       return this.remove;
+    }
 
     public void shoppedstatus() {
         this.itemname.setBackground(Color.green);
