@@ -15,6 +15,7 @@ public class Main {
         List MyList = new List();
         MyList.add(new GroceryItem("something",(float) 3));
         Meat.add(new GroceryItem("Chicken", (float) 6.45));
+        Meat.add(new GroceryItem("Beef", (float)4.75));
         Dairy.add(new GroceryItem("Milk", (float) 3.99));
         Grocery.add(new GroceryItem("Cereal", (float)2.95));
         aisles.add(Meat);
