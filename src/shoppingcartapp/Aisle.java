@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 public class Aisle {
 
-    ArrayList<GroceryItem> Items = new ArrayList<>();
+    ArrayList<GroceryItem> AisleItems = new ArrayList<>();
     String Name;
 
-    Aisle(String name){
+    Aisle(String name) {
         Name = name;
     }
 
-    public boolean add(GroceryItem I){
-       return Items.add(I);
+    public boolean addItemToAisle(GroceryItem I) {
+        return AisleItems.add(I);
     }
 }

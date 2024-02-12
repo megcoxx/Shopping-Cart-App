@@ -7,8 +7,8 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 public class AppFrame extends JFrame {
-    JButton additem;
-    JButton deleteitem;
+    JButton additemBtn;
+    JButton deleteitemBtn;
     TitleBar title = new TitleBar();
     CheckoutBtnPanel btnpanel = new CheckoutBtnPanel();
     JTabbedPane tabs = new JTabbedPane();
@@ -75,31 +75,31 @@ public class AppFrame extends JFrame {
     public void addlistener(List MyList) {
 
         // change to search
-        additem.addMouseListener(new MouseAdapter() {
+        additemBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 GroceryItem item = new GroceryItem();
-                MyList.add(item);
-                MyList.indexnum();
+                MyList.addItemToList(item);
+                MyList.calculateIndexNum();
                 revalidate();
                 repaint();
 
-                JButton shoppedbtn = item.getshoppedj();
+                JButton shoppedbtn = item.getAddItemBtn();
                 shoppedbtn.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent e) {
-                        item.shoppedstatus();
-                        MyList.add(item);
+                        item.changeShoppedStatus();
+                        MyList.addItemToList(item);
                         revalidate();
                     }
                 });
 
-                JButton remove = item.getremovej();
+                JButton remove = item.getRemoveBtn();
                 remove.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mousePressed(MouseEvent e) {
                         MyList.remove(item);
-                        MyList.indexnum();
+                        MyList.calculateIndexNum();
                         revalidate();
                         repaint();
                     }
@@ -107,7 +107,7 @@ public class AppFrame extends JFrame {
             }
         });
 
-        deleteitem.addMouseListener(new MouseAdapter() {
+        deleteitemBtn.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 Component[] itemlist = MyList.getComponents();
@@ -123,10 +123,10 @@ public class AppFrame extends JFrame {
     }
 
     public JPanel returnAisleTab(Aisle aisle, List MyList) {
-        GridLayout itemLayout = new GridLayout(aisle.Items.size(), 3);
+        GridLayout itemLayout = new GridLayout(aisle.AisleItems.size(), 3);
         JPanel panel = new JPanel();
         panel.setLayout(itemLayout);
-        for (GroceryItem i : aisle.Items) {
+        for (GroceryItem i : aisle.AisleItems) {
             JLabel nameColumn = new JLabel(i.name);
             JLabel priceColumn = new JLabel(Float.toString(i.price));
             JButton addToCartBtn = new JButton("Add to Cart");
@@ -136,7 +136,7 @@ public class AppFrame extends JFrame {
             addToCartBtn.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mousePressed(MouseEvent e) {
-                    MyList.add(i);
+                    MyList.addItemToList(i);
                     MyList.revalidate();
                     MyList.repaint();
                 }
@@ -149,19 +149,19 @@ public class AppFrame extends JFrame {
     public JPanel returnListTab(List aisle) {
         JPanel fullPanel = new JPanel();
         fullPanel.setLayout(new BorderLayout());
-        GridLayout itemLayout = new GridLayout(aisle.Items.size(), 2);
+        GridLayout itemLayout = new GridLayout(aisle.listItems.size(), 2);
         JPanel itemPanel = new JPanel();
         itemPanel.setLayout(itemLayout);
         fullPanel.add(itemPanel, BorderLayout.CENTER);
-        for (GroceryItem i : aisle.Items) {
+        for (GroceryItem i : aisle.listItems) {
             JLabel nameColumn = new JLabel(i.name);
             JLabel priceColumn = new JLabel(Float.toString(i.price));
             itemPanel.add(nameColumn);
             itemPanel.add(priceColumn);
             setVisible(true);
         }
-        additem = btnpanel.getadditembtn();
-        deleteitem = btnpanel.getdeleteitembtn();
+        additemBtn = btnpanel.getadditembtn();
+        deleteitemBtn = btnpanel.getdeleteitembtn();
         fullPanel.add(btnpanel, BorderLayout.SOUTH);
 
         return fullPanel;

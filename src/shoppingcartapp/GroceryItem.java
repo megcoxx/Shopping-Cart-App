@@ -5,7 +5,6 @@ import java.awt.*;
 
 import static java.lang.Boolean.TRUE;
 
-
 //keep textfield for searching for item
 //change to label for adding
 public class GroceryItem extends JPanel {
@@ -14,21 +13,22 @@ public class GroceryItem extends JPanel {
     float price;
     boolean onList;
     boolean shopped;
-    //change to add to list
+    // change to add to list
 
     private final JLabel pricelabel;
     private final JLabel index;
     private final JLabel itemname;
     private final JButton additembtn;
-    //change to add to list
-   private final JButton remove;
-//    
-    public GroceryItem(){
-        GridLayout Layoutitem = new GridLayout(1, 4);
-        Layoutitem.setHgap(5);
+    // change to add to list
+    private final JButton removeItemBtn;
+
+    //
+    public GroceryItem() {
+        GridLayout itemLayout = new GridLayout(1, 4);
+        itemLayout.setHgap(5);
         this.setPreferredSize(new Dimension(400, 20));
         this.setBackground(Color.pink);
-        this.setLayout(Layoutitem);
+        this.setLayout(itemLayout);
 
         index = new JLabel("");
         index.setPreferredSize(new Dimension(10, 20));
@@ -52,20 +52,19 @@ public class GroceryItem extends JPanel {
         additembtn.setPreferredSize(new Dimension(10, 20));
         this.add(this.additembtn);
 
-       remove = new JButton("Remove");
-       remove.setPreferredSize(new Dimension(10, 20));
-       this.add(this.remove);
-
+        removeItemBtn = new JButton("Remove");
+        removeItemBtn.setPreferredSize(new Dimension(10, 20));
+        this.add(this.removeItemBtn);
     }
 
     public GroceryItem(String Name, float Price) {
         name = Name;
         price = Price;
-        GridLayout Layoutitem = new GridLayout(1, 4);
-        Layoutitem.setHgap(5);
+        GridLayout itemLayout = new GridLayout(1, 4);
+        itemLayout.setHgap(5);
         this.setPreferredSize(new Dimension(400, 20));
         this.setBackground(Color.pink);
-        this.setLayout(Layoutitem);
+        this.setLayout(itemLayout);
 
         index = new JLabel("");
         index.setPreferredSize(new Dimension(10, 20));
@@ -89,19 +88,18 @@ public class GroceryItem extends JPanel {
         additembtn.setPreferredSize(new Dimension(10, 20));
         this.add(this.additembtn);
 
-       remove = new JButton("Remove");
-       remove.setPreferredSize(new Dimension(10, 20));
-       this.add(this.remove);
-
+        removeItemBtn = new JButton("Remove");
+        removeItemBtn.setPreferredSize(new Dimension(10, 20));
+        this.add(this.removeItemBtn);
     }
-    
+
     public GroceryItem(String Name) {
         name = Name;
-        GridLayout Layoutitem = new GridLayout(1, 4);
-        Layoutitem.setHgap(5);
+        GridLayout itemLayout = new GridLayout(1, 4);
+        itemLayout.setHgap(5);
         this.setPreferredSize(new Dimension(400, 20));
         this.setBackground(Color.pink);
-        this.setLayout(Layoutitem);
+        this.setLayout(itemLayout);
 
         index = new JLabel("");
         index.setPreferredSize(new Dimension(10, 20));
@@ -125,29 +123,29 @@ public class GroceryItem extends JPanel {
         additembtn.setPreferredSize(new Dimension(10, 20));
         this.add(this.additembtn);
 
-       remove = new JButton("Remove");
-       remove.setPreferredSize(new Dimension(10, 20));
-       this.add(this.remove);
+        removeItemBtn = new JButton("Remove");
+        removeItemBtn.setPreferredSize(new Dimension(10, 20));
+        this.add(this.removeItemBtn);
 
     }
 
-    public void writeindexjl(int n) {
+    public void writeIndexValue(int n) {
         this.index.setText(String.valueOf(n));
         this.revalidate();
     }
 
-    public JButton getshoppedj() {
+    public JButton getAddItemBtn() {
         return this.additembtn;
     }
 
-    public JButton getremovej() {
-       return this.remove;
+    public JButton getRemoveBtn() {
+        return this.removeItemBtn;
     }
 
-    public void shoppedstatus() {
+    public void changeShoppedStatus() {
         this.itemname.setBackground(Color.green);
         this.index.setBackground(Color.green);
-//        this.remove.setBackground(Color.green);
+        // this.remove.setBackground(Color.green);
         this.additembtn.setBackground(Color.green);
         this.shopped = TRUE;
         this.setBackground(Color.green);
