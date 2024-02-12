@@ -10,7 +10,7 @@ public class AppFrame extends JFrame {
     JButton additem;
     JButton deleteitem;
     TitleBar title = new TitleBar();
-    BtnPanel btnpanel = new BtnPanel();
+    CheckoutBtnPanel btnpanel = new CheckoutBtnPanel();
     JTabbedPane tabs = new JTabbedPane();
 
     // create hard coded data first
