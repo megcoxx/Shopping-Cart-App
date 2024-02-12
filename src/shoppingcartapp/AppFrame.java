@@ -13,7 +13,6 @@ public class AppFrame extends JFrame {
     CheckoutBtnPanel btnpanel = new CheckoutBtnPanel();
     JTabbedPane tabs = new JTabbedPane();
 
-    // create hard coded data first
     // (pull out of appframe.java and send to main)
     // create functions that will take in that data and create a display for i
     // get rid of checkout and fix aisles
@@ -26,7 +25,9 @@ public class AppFrame extends JFrame {
             tabs.addTab(aisle.Name, returnAisleTab(aisle, MyList));
         }
 
-        tabs.addTab("Checkout", returnListTab(MyList));
+        JPanel CheckoutTab = returnListTab(MyList);
+        
+        tabs.addTab("Checkout", CheckoutTab);
 
         this.add(this.tabs, BorderLayout.CENTER);
 
@@ -34,43 +35,42 @@ public class AppFrame extends JFrame {
 
     }
 
-    // public static void addFromViewAll(String inputItem) {
-    // GroceryItem searchedItem = new GroceryItem(inputItem);
-    // boolean found = false;
-    // boolean questioned = false;
+    /*public static void addFromViewAll(String inputItem) {
+        GroceryItem searchedItem = new GroceryItem(inputItem);
+        boolean found = false;
+        boolean questioned = false;
 
-    // // initialize lists with the aisles
-    // while (!found && !searchedItem.onList && !questioned) {
-    // if (Meat.Items.contains(new GroceryItem(searchedItem.name))) {
-    // found = true;
-    // searchedItem.onList = true;
-    // MyList.add(new GroceryItem(searchedItem.name));
-    // } else if (Dairy.Items.contains(new GroceryItem(searchedItem.name))) {
-    // found = true;
-    // searchedItem.onList = true;
-    // MyList.add(new GroceryItem(searchedItem.name));
-    // } else if (Grocery.Items.contains(new GroceryItem(searchedItem.name))) {
-    // found = true;
-    // searchedItem.onList = true;
-    // MyList.add(new GroceryItem(searchedItem.name));
-    // } else {
-    // System.out.println("The item was not found. Would you still like to add it to
-    // your list?");
-    // System.out.println("Y = Yes N = No");
-    // // Input.reset();
-    // // create yes or no dialog box
-    // // String input = Input.next();
-    // // if (Objects.equals(input, "Y") || Objects.equals(input, "y")) {
-    // // searchedItem.onList = true;
-    // // MyList.add(new GroceryItem(searchedItem.name));
-    // // } else {
-    // // questioned = true;
-    // // break;
-    // // }
-    // }
+        // initialize lists with the aisles
+        while (!found && !searchedItem.onList && !questioned) {
+            if (Meat.Items.contains(new GroceryItem(searchedItem.name))) {
+                found = true;
+                searchedItem.onList = true;
+                MyList.add(new GroceryItem(searchedItem.name));
+            } else if (Dairy.Items.contains(new GroceryItem(searchedItem.name))) {
+                found = true;
+                searchedItem.onList = true;
+                MyList.add(new GroceryItem(searchedItem.name));
+            } else if (Grocery.Items.contains(new GroceryItem(searchedItem.name))) {
+                found = true;
+                searchedItem.onList = true;
+                MyList.add(new GroceryItem(searchedItem.name));
+            } else {
+                System.out.println("The item was not found. Would you still like to add it to your list?");
+                System.out.println("Y = Yes N = No");
+                Input.reset();
+                // create yes or no dialog box
+                String input = Input.next();
+                if (Objects.equals(input, "Y") || Objects.equals(input, "y")) {
+                    searchedItem.onList = true;
+                    MyList.add(new GroceryItem(searchedItem.name));
+                } else {
+                    questioned = true;
+                    break;
+                }
+            }
 
-    // }
-    // }
+        }
+    }*/
 
     public void addlistener(List MyList) {
 

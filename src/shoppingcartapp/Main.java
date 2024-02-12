@@ -21,6 +21,7 @@ public class Main {
         aisles.add(Grocery);
         aisles.add(Dairy);
 
+        @SuppressWarnings("unused")
         AppFrame ShoppingList = new AppFrame(aisles, MyList);
 
     }

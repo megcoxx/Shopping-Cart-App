@@ -12,7 +12,7 @@ public class CheckoutBtnPanel extends JPanel {
         this.setPreferredSize(new Dimension(400, 80));
         this.setBackground(new Color(129, 202, 207));
 
-        additembtn = new JButton("Add An Item");
+        additembtn = new JButton("Search For A Item");
         additembtn.setFont(new Font("Sans-serif", Font.PLAIN, 20));
         this.add(this.additembtn);
 
