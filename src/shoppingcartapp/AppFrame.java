@@ -84,7 +84,6 @@ public class AppFrame extends JFrame {
             public void mousePressed(MouseEvent e) {
                 GroceryItem item = new GroceryItem();
                 MyList.addItemToList(item);
-                MyList.calculateIndexNum();
                 revalidate();
                 repaint();
 
@@ -103,7 +102,6 @@ public class AppFrame extends JFrame {
                     @Override
                     public void mousePressed(MouseEvent e) {
                         MyList.remove(item);
-                        MyList.calculateIndexNum();
                         revalidate();
                         repaint();
                     }

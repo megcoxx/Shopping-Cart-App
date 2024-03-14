@@ -16,7 +16,6 @@ public class GroceryItem extends JPanel {
     // change to add to list
 
     private final JLabel pricelabel;
-    private final JLabel index;
     private final JLabel itemname;
     private final JButton additembtn;
     // change to add to list
@@ -30,11 +29,6 @@ public class GroceryItem extends JPanel {
         this.setBackground(Color.pink);
         this.setLayout(itemLayout);
 
-        index = new JLabel("");
-        index.setPreferredSize(new Dimension(10, 20));
-        index.setHorizontalAlignment(JLabel.LEFT);
-        index.setBackground(Color.pink);
-        this.add(this.index);
 
         pricelabel = new JLabel("");
         pricelabel.setPreferredSize(new Dimension(10, 20));
@@ -66,11 +60,6 @@ public class GroceryItem extends JPanel {
         this.setBackground(Color.pink);
         this.setLayout(itemLayout);
 
-        index = new JLabel("");
-        index.setPreferredSize(new Dimension(10, 20));
-        index.setHorizontalAlignment(JLabel.LEFT);
-        index.setBackground(Color.pink);
-        this.add(this.index);
 
         pricelabel = new JLabel(String.valueOf(price));
         pricelabel.setPreferredSize(new Dimension(10, 20));
@@ -101,12 +90,6 @@ public class GroceryItem extends JPanel {
         this.setBackground(Color.pink);
         this.setLayout(itemLayout);
 
-        index = new JLabel("");
-        index.setPreferredSize(new Dimension(10, 20));
-        index.setHorizontalAlignment(JLabel.LEFT);
-        index.setBackground(Color.pink);
-        this.add(this.index);
-
         pricelabel = new JLabel("");
         pricelabel.setPreferredSize(new Dimension(10, 20));
         pricelabel.setHorizontalAlignment(JLabel.LEFT);
@@ -129,10 +112,6 @@ public class GroceryItem extends JPanel {
 
     }
 
-    public void writeIndexValue(int n) {
-        this.index.setText(String.valueOf(n));
-        this.revalidate();
-    }
 
     public JButton getAddItemBtn() {
         return this.additembtn;
@@ -144,7 +123,6 @@ public class GroceryItem extends JPanel {
 
     public void changeShoppedStatus() {
         this.itemname.setBackground(Color.green);
-        this.index.setBackground(Color.green);
         // this.remove.setBackground(Color.green);
         this.additembtn.setBackground(Color.green);
         this.shopped = TRUE;
